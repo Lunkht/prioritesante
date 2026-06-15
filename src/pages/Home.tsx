@@ -4,6 +4,7 @@ import ImpactSection from '@/components/ImpactSection';
 import ServicesSection from '@/components/ServicesSection';
 import MissionSection from '@/components/MissionSection';
 import ClinicsSection from '@/components/ClinicsSection';
+import TestimonialsSection from '@/components/TestimonialsSection';
 import ContactSection from '@/components/ContactSection';
 import Footer from '@/components/Footer';
 
@@ -40,6 +41,9 @@ export default function Home() {
 
         {/* Mission & Donation Section - Engagement ONG */}
         <MissionSection />
+
+        {/* Testimonials Section - Avis patients */}
+        <TestimonialsSection />
 
         {/* Contact & Appointment Section - Formulaires avec carte */}
         <ContactSection />

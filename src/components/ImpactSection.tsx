@@ -1,6 +1,5 @@
 import { useState, useRef, useEffect } from 'react';
 import { Heart, Stethoscope, Clock } from 'lucide-react';
-import ScrollReveal from './ScrollReveal';
 
 /**
  * Impact Section - Minimalisme Médical Moderne
@@ -96,21 +95,25 @@ export default function ImpactSection() {
       <div className="container">
         <div className="flex flex-col items-center gap-12">
           {/* Section Header */}
-          <ScrollReveal className="flex flex-col items-center gap-4 max-w-2xl text-center">
+          <div className="flex flex-col items-center gap-4 max-w-2xl text-center animate-slideInUp">
             <h2 className="text-3xl md:text-4xl font-bold text-foreground">
               Notre impact en chiffres
             </h2>
             <p className="text-lg text-muted-foreground">
               Depuis notre création, nous avons mis l'accès aux soins au cœur de notre mission.
             </p>
-          </ScrollReveal>
+          </div>
 
           {/* Counters Grid */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full">
             {counters.map((counter, index) => (
-              <ScrollReveal key={counter.id} delay={index * 0.1}>
+              <div
+                key={counter.id}
+                style={{ animationDelay: `${index * 0.1}s` }}
+                className="animate-slideInUp"
+              >
                 <AnimatedCounter {...counter} />
-              </ScrollReveal>
+              </div>
             ))}
           </div>
 

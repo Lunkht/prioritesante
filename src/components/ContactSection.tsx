@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { MapPin, Phone, Clock, Mail } from 'lucide-react';
 import ClinicsMap from './ClinicsMap';
-import ScrollReveal from './ScrollReveal';
 
 /**
  * Contact & Appointment Section - Minimalisme Médical Moderne
@@ -70,32 +69,36 @@ export default function ContactSection() {
       <div className="container">
         <div className="flex flex-col gap-16">
           {/* Section Header */}
-          <ScrollReveal className="flex flex-col gap-4 max-w-2xl">
+          <div className="flex flex-col gap-4 max-w-2xl animate-slideInUp">
             <h2 className="text-3xl md:text-4xl font-bold text-foreground">
               Nous Contacter
             </h2>
             <p className="text-lg text-muted-foreground">
               Avez-vous des questions ? Nous sommes là pour vous aider. Contactez-nous par téléphone, email ou remplissez le formulaire ci-dessous.
             </p>
-          </ScrollReveal>
+          </div>
 
           {/* Contact Info Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {contactInfo.map((info, index) => (
-              <ScrollReveal key={info.title} delay={index * 0.1}>
+              <div
+                key={info.title}
+                style={{ animationDelay: `${index * 0.1}s` }}
+                className="animate-slideInUp"
+              >
                 <div className="flex flex-col gap-3 p-6 bg-gray-50 rounded-lg border border-border hover:border-primary transition-all duration-300 hover-lift">
                   <div className="text-primary hover-scale transition-all duration-300">{info.icon}</div>
                   <h3 className="font-semibold text-foreground">{info.title}</h3>
                   <p className="text-sm text-muted-foreground">{info.content}</p>
                 </div>
-              </ScrollReveal>
+              </div>
             ))}
           </div>
 
           {/* Main Content Grid */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {/* Contact Form */}
-            <ScrollReveal className="hover-lift">
+            <div className="animate-slideInUp hover-lift">
               <div id="appointment" className="bg-white border border-border rounded-lg p-8">
                 <h3 className="text-2xl font-bold text-foreground mb-2">Prendre Rendez-vous</h3>
                 <p className="text-muted-foreground mb-6">
@@ -192,10 +195,10 @@ export default function ContactSection() {
                   )}
                 </form>
               </div>
-            </ScrollReveal>
+            </div>
 
             {/* Map & Emergency Info */}
-            <ScrollReveal animation="scaleIn" delay={0.2} className="flex flex-col gap-6">
+            <div className="flex flex-col gap-6 animate-scaleIn" style={{ animationDelay: '0.2s' }}>
               {/* Emergency Info */}
               <div className="bg-red-50 rounded-lg p-6 border border-border">
                 <h4 className="font-bold text-foreground mb-2 flex items-center gap-2 text-primary">
@@ -240,7 +243,7 @@ export default function ContactSection() {
               <div className="w-full h-48 md:h-56 rounded-lg border border-border overflow-hidden">
                 <ClinicsMap selectedClinic={null} onClinicSelect={() => {}} />
               </div>
-            </ScrollReveal>
+            </div>
           </div>
         </div>
       </div>

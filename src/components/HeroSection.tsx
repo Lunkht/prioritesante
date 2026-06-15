@@ -7,6 +7,8 @@
  * - Espacement généreux pour respiration visuelle
  */
 
+import { Calendar } from 'lucide-react';
+
 export default function HeroSection() {
   const handleAppointment = () => {
     const element = document.querySelector('#appointment');
@@ -49,8 +51,9 @@ export default function HeroSection() {
             <div className="flex flex-col sm:flex-row gap-4 pt-4">
               <button
                 onClick={handleAppointment}
-                className="btn-primary text-base font-semibold py-4 px-8 transition-all duration-300 active:scale-95 hover-glow"
+                className="btn-primary text-base font-semibold py-4 px-8 transition-all duration-300 active:scale-95 hover-glow inline-flex items-center gap-2"
               >
+                <Calendar className="w-5 h-5" />
                 Prendre Rendez-vous
               </button>
               <button
