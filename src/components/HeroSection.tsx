@@ -31,8 +31,8 @@ export default function HeroSection() {
       backgroundSize: 'cover',
       backgroundPosition: 'center'
     }}>
-      {/* Gradient overlay - from left (transparent) to right (dark) */}
-      <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-black/30 pointer-events-none" />
+      {/* Gradient overlay - from left (dark) to right (darker) */}
+      <div className="absolute inset-0 bg-gradient-to-r from-black/50 via-black/50 to-black/50 pointer-events-none" />
 
       <div className="container relative z-10">
         <div className="max-w-2xl">
