@@ -5,6 +5,8 @@ import ImpactSection from '@/components/ImpactSection';
 import ServicesSection from '@/components/ServicesSection';
 import MissionSection from '@/components/MissionSection';
 import ClinicsSection from '@/components/ClinicsSection';
+import PractitionersSection from '@/components/PractitionersSection';
+import PracticalSection from '@/components/PracticalSection';
 import TestimonialsSection from '@/components/TestimonialsSection';
 import ContactSection from '@/components/ContactSection';
 import Footer from '@/components/Footer';
@@ -33,6 +35,12 @@ export default function Home() {
 
         {/* About Section - Présentation */}
         <AboutSection />
+
+        {/* Practical Info - Pratique */}
+        <PracticalSection />
+
+        {/* Practitioners Section - Nos praticiens */}
+        <PractitionersSection />
 
         {/* Services Section - Grille de services */}
         <ServicesSection />
