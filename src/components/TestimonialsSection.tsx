@@ -1,4 +1,5 @@
 import { Quote, Star } from 'lucide-react';
+import ScrollReveal from './ScrollReveal';
 
 interface Testimonial {
   id: string;
@@ -38,23 +39,21 @@ export default function TestimonialsSection() {
       <div className="container">
         <div className="flex flex-col items-center gap-12">
           {/* Section Header */}
-          <div className="flex flex-col items-center gap-4 max-w-2xl text-center animate-slideInUp">
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground">
-              Ce que disent nos patients
-            </h2>
-            <p className="text-lg text-muted-foreground">
-              La satisfaction de nos patients est notre plus belle récompense.
-            </p>
-          </div>
+          <ScrollReveal animation="animate-slideInUp">
+            <div className="flex flex-col items-center gap-4 max-w-2xl text-center">
+              <h2 className="text-3xl md:text-4xl font-bold text-foreground">
+                Ce que disent nos patients
+              </h2>
+              <p className="text-lg text-muted-foreground">
+                La satisfaction de nos patients est notre plus belle récompense.
+              </p>
+            </div>
+          </ScrollReveal>
 
           {/* Testimonials Grid */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {TESTIMONIALS.map((testimonial, index) => (
-              <div
-                key={testimonial.id}
-                style={{ animationDelay: `${index * 0.15}s` }}
-                className="animate-slideInUp"
-              >
+              <ScrollReveal key={testimonial.id} animation="animate-slideInUp" delay={index * 0.15}>
                 <div className="bg-white border border-border rounded-lg p-8 hover-lift relative">
                   {/* Quote Icon */}
                   <div className="absolute top-4 right-4 text-red-50">
@@ -79,7 +78,7 @@ export default function TestimonialsSection() {
                     <p className="text-sm text-muted-foreground">{testimonial.role}</p>
                   </div>
                 </div>
-              </div>
+              </ScrollReveal>
             ))}
           </div>
         </div>

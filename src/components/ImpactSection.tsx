@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
 import { Heart, Stethoscope, Clock } from 'lucide-react';
+import ScrollReveal from './ScrollReveal';
 
 /**
  * Impact Section - Minimalisme Médical Moderne
@@ -95,25 +96,25 @@ export default function ImpactSection() {
       <div className="container">
         <div className="flex flex-col items-center gap-12">
           {/* Section Header */}
-          <div className="flex flex-col items-center gap-4 max-w-2xl text-center animate-slideInUp">
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground">
-              Notre impact en chiffres
-            </h2>
-            <p className="text-lg text-muted-foreground">
-              Depuis notre création, nous avons mis l'accès aux soins au cœur de notre mission.
-            </p>
-          </div>
+          <ScrollReveal animation="animate-slideInUp">
+            <div className="flex flex-col items-center gap-4 max-w-2xl text-center">
+              <h2 className="text-3xl md:text-4xl font-bold text-foreground">
+                Notre impact en chiffres
+              </h2>
+              <p className="text-lg text-muted-foreground">
+                Depuis notre création, nous avons mis l'accès aux soins au cœur de notre mission.
+              </p>
+            </div>
+          </ScrollReveal>
 
           {/* Counters Grid */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full">
             {counters.map((counter, index) => (
-              <div
-                key={counter.id}
-                style={{ animationDelay: `${index * 0.1}s` }}
-                className="animate-slideInUp"
-              >
-                <AnimatedCounter {...counter} />
-              </div>
+              <ScrollReveal key={counter.id} animation="animate-slideInUp" delay={index * 0.1}>
+                <div>
+                  <AnimatedCounter {...counter} />
+                </div>
+              </ScrollReveal>
             ))}
           </div>
 
@@ -122,21 +123,27 @@ export default function ImpactSection() {
 
           {/* Additional info with Icons */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full pt-8">
-            <div className="flex flex-col gap-3 text-center items-center">
-              <Heart className="w-8 h-8 text-primary" />
-              <p className="text-sm font-semibold text-primary">ENGAGEMENT</p>
-              <p className="text-muted-foreground">Soins gratuits ou à faible coût pour les plus démunis</p>
-            </div>
-            <div className="flex flex-col gap-3 text-center items-center">
-              <Stethoscope className="w-8 h-8 text-primary" />
-              <p className="text-sm font-semibold text-primary">QUALITÉ</p>
-              <p className="text-muted-foreground">Équipe médicale qualifiée et équipements modernes</p>
-            </div>
-            <div className="flex flex-col gap-3 text-center items-center">
-              <Clock className="w-8 h-8 text-primary" />
-              <p className="text-sm font-semibold text-primary">ACCESSIBILITÉ</p>
-              <p className="text-muted-foreground">Disponible 24h/24, 7j/7 pour les urgences</p>
-            </div>
+            <ScrollReveal animation="animate-slideInUp" delay={0.1}>
+              <div className="flex flex-col gap-3 text-center items-center">
+                <Heart className="w-8 h-8 text-primary" />
+                <p className="text-sm font-semibold text-primary">ENGAGEMENT</p>
+                <p className="text-muted-foreground">Soins gratuits ou à faible coût pour les plus démunis</p>
+              </div>
+            </ScrollReveal>
+            <ScrollReveal animation="animate-slideInUp" delay={0.2}>
+              <div className="flex flex-col gap-3 text-center items-center">
+                <Stethoscope className="w-8 h-8 text-primary" />
+                <p className="text-sm font-semibold text-primary">QUALITÉ</p>
+                <p className="text-muted-foreground">Équipe médicale qualifiée et équipements modernes</p>
+              </div>
+            </ScrollReveal>
+            <ScrollReveal animation="animate-slideInUp" delay={0.3}>
+              <div className="flex flex-col gap-3 text-center items-center">
+                <Clock className="w-8 h-8 text-primary" />
+                <p className="text-sm font-semibold text-primary">ACCESSIBILITÉ</p>
+                <p className="text-muted-foreground">Disponible 24h/24, 7j/7 pour les urgences</p>
+              </div>
+            </ScrollReveal>
           </div>
 
 

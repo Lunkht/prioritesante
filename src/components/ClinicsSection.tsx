@@ -1,6 +1,7 @@
 import { useState, useMemo } from 'react';
 import { Search, MapPin, Phone, Clock, AlertCircle } from 'lucide-react';
 import { clinics, Clinic } from '@/data/clinics';
+import ScrollReveal from './ScrollReveal';
 
 /**
  * Clinics Section - Nos Cliniques
@@ -61,62 +62,66 @@ export default function ClinicsSection() {
     <section id="clinics" className="section-spacing bg-white">
       <div className="container">
         {/* Section Header */}
-        <div className="flex flex-col gap-4 max-w-3xl mb-12 animate-slideInUp">
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground">
-            Nos Cliniques en Guinée
-          </h2>
-          <p className="text-lg text-muted-foreground">
-            Trouvez la clinique Priorité Santé la plus proche de vous. Nous sommes présents dans les principales villes de Guinée pour vous servir.
-          </p>
-        </div>
+        <ScrollReveal animation="animate-slideInUp">
+          <div className="flex flex-col gap-4 max-w-3xl mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground">
+              Nos Cliniques en Guinée
+            </h2>
+            <p className="text-lg text-muted-foreground">
+              Trouvez la clinique Priorité Santé la plus proche de vous. Nous sommes présents dans les principales villes de Guinée pour vous servir.
+            </p>
+          </div>
+        </ScrollReveal>
 
         {/* Search and Filter */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8 animate-slideInUp">
-          {/* Search Input */}
-          <div className="md:col-span-2 relative">
-            <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-muted-foreground pointer-events-none" />
-            <input
-              type="text"
-              placeholder="Rechercher par nom, ville ou adresse..."
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-12 pr-4 py-3 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-300"
-            />
-          </div>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+          <ScrollReveal animation="animate-slideInUp" delay={0.1}>
+            {/* Search Input */}
+            <div className="md:col-span-2 relative">
+              <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-muted-foreground pointer-events-none" />
+              <input
+                type="text"
+                placeholder="Rechercher par nom, ville ou adresse..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className="w-full pl-12 pr-4 py-3 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-300"
+              />
+            </div>
+          </ScrollReveal>
 
-          {/* Region Filter */}
-          <select
-            value={filterRegion}
-            onChange={(e) => setFilterRegion(e.target.value)}
-            className="px-4 py-3 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-300 bg-white cursor-pointer"
-          >
-            <option value="all">Toutes les régions</option>
-            {regions.map(region => (
-              <option key={region} value={region}>
-                {region}
-              </option>
-            ))}
-          </select>
+          <ScrollReveal animation="animate-slideInUp" delay={0.2}>
+            {/* Region Filter */}
+            <select
+              value={filterRegion}
+              onChange={(e) => setFilterRegion(e.target.value)}
+              className="px-4 py-3 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-300 bg-white cursor-pointer"
+            >
+              <option value="all">Toutes les régions</option>
+              {regions.map(region => (
+                <option key={region} value={region}>
+                  {region}
+                </option>
+              ))}
+            </select>
+          </ScrollReveal>
         </div>
 
         {/* Results Count */}
-        <div className="mb-6 text-sm text-muted-foreground animate-slideInUp">
-          {searchQuery === '' && filterRegion === 'all' ? (
-            <span>Affichage de 3 cliniques sur {totalFilteredClinics} disponibles</span>
-          ) : (
-            <span>{filteredClinics.length} clinique{filteredClinics.length !== 1 ? 's' : ''} trouvée{filteredClinics.length !== 1 ? 's' : ''}</span>
-          )}
-        </div>
+        <ScrollReveal animation="animate-slideInUp" delay={0.3}>
+          <div className="mb-6 text-sm text-muted-foreground">
+            {searchQuery === '' && filterRegion === 'all' ? (
+              <span>Affichage de 3 cliniques sur {totalFilteredClinics} disponibles</span>
+            ) : (
+              <span>{filteredClinics.length} clinique{filteredClinics.length !== 1 ? 's' : ''} trouvée{filteredClinics.length !== 1 ? 's' : ''}</span>
+            )}
+          </div>
+        </ScrollReveal>
 
         {/* Clinics Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
           {filteredClinics.length > 0 ? (
             filteredClinics.map((clinic, index) => (
-              <div
-                key={clinic.id}
-                style={{ animationDelay: `${index * 0.05}s` }}
-                className="animate-slideInUp"
-              >
+              <ScrollReveal key={clinic.id} animation="animate-slideInUp" delay={index * 0.05}>
                 <div
                   onClick={() => setSelectedClinic(clinic)}
                   className="clinic-card group cursor-pointer hover-lift p-4"
@@ -187,59 +192,65 @@ export default function ClinicsSection() {
                     Voir sur la carte
                   </button>
                 </div>
-              </div>
+              </ScrollReveal>
             ))
           ) : (
-            <div className="col-span-full text-center py-12 animate-slideInUp">
-              <p className="text-muted-foreground mb-2">Aucune clinique trouvée</p>
-              <p className="text-sm text-muted-foreground">Essayez une autre recherche ou un autre filtre</p>
+            <div className="col-span-full text-center py-12">
+              <ScrollReveal animation="animate-slideInUp">
+                <div>
+                  <p className="text-muted-foreground mb-2">Aucune clinique trouvée</p>
+                  <p className="text-sm text-muted-foreground">Essayez une autre recherche ou un autre filtre</p>
+                </div>
+              </ScrollReveal>
             </div>
           )}
         </div>
 
         {/* Selected Clinic Details */}
         {selectedClinic && (
-          <div className="mt-8 p-6 bg-red-50 rounded-lg border border-primary animate-slideInUp">
-            <div className="flex justify-between items-start mb-4">
-              <div>
-                <h3 className="text-xl font-bold text-foreground">{selectedClinic.name}</h3>
-                <p className="text-muted-foreground">{selectedClinic.city}, {selectedClinic.region}</p>
-              </div>
-              <button
-                onClick={() => setSelectedClinic(null)}
-                className="text-muted-foreground hover:text-foreground transition-colors"
-              >
-                ✕
-              </button>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div>
-                <h4 className="font-semibold text-foreground mb-3">Services disponibles :</h4>
-                <ul className="space-y-2">
-                  {selectedClinic.services.map((service, idx) => (
-                    <li key={idx} className="flex items-center gap-2 text-muted-foreground">
-                      <div className="w-2 h-2 bg-primary rounded-full" />
-                      {service}
-                    </li>
-                  ))}
-                </ul>
+          <ScrollReveal animation="animate-slideInUp">
+            <div className="mt-8 p-6 bg-red-50 rounded-lg border border-primary">
+              <div className="flex justify-between items-start mb-4">
+                <div>
+                  <h3 className="text-xl font-bold text-foreground">{selectedClinic.name}</h3>
+                  <p className="text-muted-foreground">{selectedClinic.city}, {selectedClinic.region}</p>
+                </div>
+                <button
+                  onClick={() => setSelectedClinic(null)}
+                  className="text-muted-foreground hover:text-foreground transition-colors"
+                >
+                  ✕
+                </button>
               </div>
 
-              <div>
-                <h4 className="font-semibold text-foreground mb-3">Informations pratiques :</h4>
-                <div className="space-y-2 text-muted-foreground text-sm">
-                  <p><strong>Adresse :</strong> {selectedClinic.address}</p>
-                  <p><strong>Téléphone :</strong> <a href={`tel:${selectedClinic.phone}`} className="text-primary hover:underline">{selectedClinic.phone}</a></p>
-                  <p><strong>Email :</strong> <a href={`mailto:${selectedClinic.email}`} className="text-primary hover:underline">{selectedClinic.email}</a></p>
-                  <p><strong>Horaires :</strong> {selectedClinic.hours}</p>
-                  {selectedClinic.emergencyAvailable && (
-                    <p className="text-primary font-semibold">✓ Service d'urgence 24h/24, 7j/7</p>
-                  )}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                  <h4 className="font-semibold text-foreground mb-3">Services disponibles :</h4>
+                  <ul className="space-y-2">
+                    {selectedClinic.services.map((service, idx) => (
+                      <li key={idx} className="flex items-center gap-2 text-muted-foreground">
+                        <div className="w-2 h-2 bg-primary rounded-full" />
+                        {service}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                <div>
+                  <h4 className="font-semibold text-foreground mb-3">Informations pratiques :</h4>
+                  <div className="space-y-2 text-muted-foreground text-sm">
+                    <p><strong>Adresse :</strong> {selectedClinic.address}</p>
+                    <p><strong>Téléphone :</strong> <a href={`tel:${selectedClinic.phone}`} className="text-primary hover:underline">{selectedClinic.phone}</a></p>
+                    <p><strong>Email :</strong> <a href={`mailto:${selectedClinic.email}`} className="text-primary hover:underline">{selectedClinic.email}</a></p>
+                    <p><strong>Horaires :</strong> {selectedClinic.hours}</p>
+                    {selectedClinic.emergencyAvailable && (
+                      <p className="text-primary font-semibold">✓ Service d'urgence 24h/24, 7j/7</p>
+                    )}
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
+          </ScrollReveal>
         )}
       </div>
     </section>

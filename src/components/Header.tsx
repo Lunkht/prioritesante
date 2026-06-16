@@ -19,10 +19,10 @@ export default function Header() {
 
   const navItems = [
     { label: 'Accueil', href: '#home' },
+    { label: 'Présentation', href: '#presentation' },
     { label: 'Nos Services', href: '#services' },
     { label: 'Notre Mission', href: '#mission' },
     { label: 'Nos Cliniques', href: '#clinics' },
-    { label: 'Faire un Don', href: '#donate' },
     { label: 'Contact', href: '#contact' },
   ];
 
